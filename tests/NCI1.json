@@ -1,0 +1,10 @@
+{
+    "hidden_lr": [0.1],
+    "output_lr": [0.1, 0.01],
+    "hidden_lambda": [0.01, 0.001],
+    "output_lambda": [0.01, 0.001],
+    "max_output_epochs": [400],
+    "max_hidden_epochs": [200],
+    "output_eps": [1e-3],
+    "wide": [false]
+}
