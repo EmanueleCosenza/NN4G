@@ -8,4 +8,6 @@ This project has been developed as part of my undergraduate thesis at the Univer
 - `data.py` contains the definition of a graph dataset.
 - `validation.py` contains functions used for model selection and model assessment.
 - `pynn4g.py` contains the implementation of a CLI which can be used to train a network, assess the model, select a model and predict new data with a trained network.
+- The `data` directory contains MUTAG, NCI1 and IMDB-M, three graph datasets used for model assessment.
+- The `tests` directory contains hyperparameter grids in JSON format.
 
