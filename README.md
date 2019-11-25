@@ -5,7 +5,7 @@ This project has been developed as part of my undergraduate thesis at the Univer
 
 ## Project structure
 - `model.py` contains everything related to the NN4G model.
-- `data.py` contains classes and functions used to parse and create a graph dataset.
+- `data.py` contains the definition of a graph dataset.
 - `validation.py` contains functions used for model selection and model assessment.
-- `pynn4g.py` contains the implementation of a CLI which can be used to train a network, asses the model, select a model and predict new data with a selected model.
+- `pynn4g.py` contains the implementation of a CLI which can be used to train a network, assess the model, select a model and predict new data with a selected model.
 
