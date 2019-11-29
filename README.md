@@ -46,6 +46,10 @@ The `NN4G` class represents a neural network. In this particular implementation,
 The class inherits from scikit-learn's `BaseEstimator` implementing its base methods `get_params` and `set_params`, which respectively get and set the network parameters. In order to be a scikit-learn classifier, `NN4G` implements `fit` and `predict`. The `fit` method is used to train the network on a training set, optionally using a validation set for the early stopping procedure, while the `predict` method is used to calculate predictions associated to graphs contained in a list. The class also implements `score`, which computes the network accuracy on a dataset. Each network hyperparameter can be set using `NN4G`'s constructor.\
 The class interface is used by the validation module to do model selection and to assess the model on a dataset.
 
+###### Training procedure
+In each iteration of the training loop in the `fit` method:
+- Aew hidden unit is trained and added to the network 
+
 ## Model selection and model assessment implementation
 The model selection and model assessment procedures are defined inside the `validation.py` module.\
 Model selection is implemented inside the `grid_search_cv` function, using k-fold cross validation and grid search for hyperparameter optimization. Model assessment is implemented inside the `nested_cross_validation` function, using a nested cross validation procedure.\
