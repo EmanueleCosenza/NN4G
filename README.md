@@ -4,9 +4,7 @@ This repository contains a Python implementation of NN4G with new architectural 
 This project has been developed as part of my undergraduatethesis at the University of Pisa under the supervision of professor Alessio Micheli.
 
 ##### Table of Contents  
-[CLI usage](#cli usage)
-
-<a name="cli usage"/>
+[CLI usage](https://github.com/EmanueleCosenza/NN4G/blob/master/README.md#cli-usage)
 
 ## CLI usage
 `pynn4g` is a basic CLI that can be used to experiment with the model. It offers 4 main functionalities through 4 commands.
@@ -55,7 +53,7 @@ The class interface is used by the validation module to do model selection and t
 ###### Training procedure
 In each iteration of the training loop in the `fit` method:
 1. A new hidden unit is trained and added to the network, maximizing the correlation between the unit output and the residual errors in the output layer for the previous iteration.\
-Multiple units can be trained in parallel to find the best correlation. The training of a single hidden unit happens inside `generate_candidate_unit`. Then, in the `generate_hidden_unit`, results from multiple trainings are gathered and, finally, the best unit is added to the network.
+Multiple units can be trained in parallel to find the best correlation. The training of a single hidden unit happens inside `generate_candidate_unit`. Then, in the `generate_hidden_unit` method, results from multiple trainings are gathered and, finally, the best unit is added to the network.
 2. The output layer is trained by minimizing a loss function (MSE or cross entropy loss). The training is implemented inside `generate_output_unit`.
 3. New predictions and residual errors are computed for each training set sample.
 
