@@ -47,9 +47,12 @@ python pynn4g.py predict DS_DIR trained/mutag.model
 - The `tests` directory contains examples of hyperparameter grids in JSON format.
 
 ## CLI implementation
-`pynn4g` has been implemented using the standard Python module for argument parsing, argparse. In `pynn4g.py`, different actions are taken for each `pynn4g` command using the interfaces exposed by the other modules.
+`pynn4g` has been implemented with the standard Python module for argument parsing, argparse. In `pynn4g.py`, different actions are taken for each `pynn4g` command using the interfaces exposed by the other modules.
 
 ## Model implementation
+The neural network implementation is based on PyTorch, a Python module for deep learning.\
+The two most important classes in the `model.py` module are `Layer` and `NN4G`.
+
 The `Layer` class represents a layer of the neural network. Objects of this type are used inside the `NN4G` class to represent hidden layers and output layers. `Layer` inherits from PyTorch's `Module` and therefore implements a `forward` method, which computes the layer outputs given its inputs.\
 The activation function of the units in a layer can be chosen between `PyTorch`'s `Tanh`, `Sigmoid` and `Softmax` (for the output layer).
 
