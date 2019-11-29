@@ -22,9 +22,9 @@ python pynn4g.py assess data/MUTAG tests/MUTAG.json 3 5
 python pynn4g.py select data/MUTAG tests/mutag.json 3 trained/mutag.model
 ```
 
-`predict` is
+The `predict` command represents a predictor, which predicts outputs for a set of unlabeled graphs. In the example, `pynn4g` predicts  the outputs for each graph contained in the dataset contained in `DS_DIR`. The file `trained/mutag.model` contains a trained model (saved previously with the `select` command). The trained model is used to compute the predictions.
 ```
-python pynn4g.py predict data/SAMPLES trained/mutag.model
+python pynn4g.py predict DS_DIR trained/mutag.model
 ```
 
 
