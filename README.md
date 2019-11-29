@@ -4,13 +4,17 @@ This repository contains a Python implementation of NN4G with new architectural 
 This project has been developed as part of my undergraduatethesis at the University of Pisa under the supervision of professor Alessio Micheli.
 
 ## CLI usage
-`pynn4g` is a basic CLI that can be used to experiment with the model. It offers 4 main functionalities through 4 commands:
-- `train` trains a single network on a dataset (early stopping is optional). Learning curves can be plotted with the `--plot` option.
+`pynn4g` is a basic CLI that can be used to experiment with the model. It offers 4 main functionalities through 4 commands.\
+
+`train` trains a single network on a dataset (early stopping is optional). Learning curves can be plotted with the `--plot` option.
 ```
 git status
 git add
 git commit
 ```
+- `assess`
+- `select`
+- `predict`
 
 
 ## Project structure
