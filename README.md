@@ -3,8 +3,15 @@ NN4G is a constructive neural network for graphs defined in [Micheli, Alessio. "
 This repository contains a Python implementation of NN4G with new architectural and training variants, a validation system for the network and `pynn4g`, a basic command line interface.
 This project has been developed as part of my undergraduatethesis at the University of Pisa under the supervision of professor Alessio Micheli.
 
-#### Table of Contents  
-[CLI usage](https://github.com/EmanueleCosenza/NN4G/blob/master/README.md#cli-usage)
+### Table of Contents  
+- [CLI usage](https://github.com/EmanueleCosenza/NN4G/blob/master/README.md#cli-usage)
+- [Project contents](https://github.com/EmanueleCosenza/NN4G/blob/master/README.md#project-contents)
+- [CLI implementation](https://github.com/EmanueleCosenza/NN4G/blob/master/README.md#cli-implementation)
+- [Model implementation](https://github.com/EmanueleCosenza/NN4G/blob/master/README.md#model-implementation)
+  - [Training procedure](https://github.com/EmanueleCosenza/NN4G/blob/master/README.md#training-procedure)
+- [Model selection and model assessment](https://github.com/EmanueleCosenza/NN4G/blob/master/README.md#model-selection-and-model-assessment)
+- [Dataset creation](https://github.com/EmanueleCosenza/NN4G/blob/master/README.md#dataset-creation)
+- [Datasets](https://github.com/EmanueleCosenza/NN4G/blob/master/README.md#datasets)
 
 ## CLI usage
 `pynn4g` is a basic CLI that can be used to experiment with the model. It offers 4 main functionalities through 4 commands.
@@ -31,7 +38,7 @@ python pynn4g.py predict DS_DIR trained/mutag.model
 ```
 
 
-## Project structure
+## Project contents
 - `model.py` contains everything related to the NN4G model.
 - `data.py` contains the definition of a graph dataset.
 - `validation.py` contains functions used for model selection and model assessment.
@@ -50,7 +57,7 @@ The `NN4G` class represents a neural network. In this particular implementation,
 The class inherits from scikit-learn's `BaseEstimator` implementing its base methods `get_params` and `set_params`, which respectively get and set the network parameters. In order to be a scikit-learn classifier, `NN4G` implements `fit` and `predict`. The `fit` method is used to train the network on a training set, optionally using a validation set for the early stopping procedure, while the `predict` method is used to calculate predictions associated to graphs contained in a list. The class also implements `score`, which computes the network accuracy on a dataset. Each network hyperparameter can be set using `NN4G`'s constructor.\
 The class interface is used by the validation module to do model selection and to assess the model on a dataset.
 
-### Training procedure
+#### Training procedure
 In each iteration of the training loop in the `fit` method:
 1. A new hidden unit is trained and added to the network, maximizing the correlation between the unit output and the residual errors in the output layer for the previous iteration.\
 Multiple units can be trained in parallel to find the best correlation. The training of a single hidden unit happens inside `generate_candidate_unit`. Then, in the `generate_hidden_unit` method, results from multiple trainings are gathered and, finally, the best unit is added to the network.
@@ -60,7 +67,7 @@ Multiple units can be trained in parallel to find the best correlation. The trai
 Minimization and maximization problems are solved by means of the algorithm of gradient ascent/descent.\
 In both cases, the algorithms are implemented using PyTorch's `Optimizer`s with weight decay (L2 loss). In this way, gradients are automatically computed by PyTorch's through its computational graph and weights are updated calling the `Tensor`'s `backward` method.
 
-## Model selection and model assessment implementation
+## Model selection and model assessment
 The model selection and model assessment procedures are defined inside the `validation.py` module.\
 Model selection is implemented inside the `grid_search_cv` function, using k-fold cross validation and grid search for hyperparameter optimization. Model assessment is implemented inside the `nested_cross_validation` function, using a nested cross validation procedure.\
 While `grid_search_cv` returns the final network trained with the best hyperparameters on the entire input dataset, `nested_cross_validation` returns an estimate of the model performance on a dataset.\
