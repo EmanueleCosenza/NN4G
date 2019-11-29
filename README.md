@@ -11,6 +11,7 @@ This project has been developed as part of my undergraduatethesis at the Univers
 python pynn4g.py train data/NCI1 --early stopping --params=tests/NCI1.json --plot
 ```
 
+
 `assess` estimates the performance of NN4G on a dataset through nested cross validation. In the example below, NN4G is assessed on the MUTAG dataset using a 3-fold inner CV and a 5-fold outer CV. `tests/MUTAG.json` is a JSON file which contains an hyperparameter grid.
 ```
 python pynn4g.py assess data/MUTAG tests/MUTAG.json 3 5
