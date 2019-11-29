@@ -3,7 +3,7 @@ NN4G is a constructive neural network for graphs defined in [Micheli, Alessio. "
 This repository contains a Python implementation of NN4G with new architectural and training variants, a validation system for the network and `pynn4g`, a basic command line interface.
 This project has been developed as part of my undergraduatethesis at the University of Pisa under the supervision of professor Alessio Micheli.
 
-##### Table of Contents  
+#### Table of Contents  
 [CLI usage](https://github.com/EmanueleCosenza/NN4G/blob/master/README.md#cli-usage)
 
 ## CLI usage
@@ -50,7 +50,7 @@ The `NN4G` class represents a neural network. In this particular implementation,
 The class inherits from scikit-learn's `BaseEstimator` implementing its base methods `get_params` and `set_params`, which respectively get and set the network parameters. In order to be a scikit-learn classifier, `NN4G` implements `fit` and `predict`. The `fit` method is used to train the network on a training set, optionally using a validation set for the early stopping procedure, while the `predict` method is used to calculate predictions associated to graphs contained in a list. The class also implements `score`, which computes the network accuracy on a dataset. Each network hyperparameter can be set using `NN4G`'s constructor.\
 The class interface is used by the validation module to do model selection and to assess the model on a dataset.
 
-###### Training procedure
+### Training procedure
 In each iteration of the training loop in the `fit` method:
 1. A new hidden unit is trained and added to the network, maximizing the correlation between the unit output and the residual errors in the output layer for the previous iteration.\
 Multiple units can be trained in parallel to find the best correlation. The training of a single hidden unit happens inside `generate_candidate_unit`. Then, in the `generate_hidden_unit` method, results from multiple trainings are gathered and, finally, the best unit is added to the network.
