@@ -4,7 +4,8 @@ This repository contains a Python implementation of NN4G with new architectural 
 This project has been developed as part of my undergraduatethesis at the University of Pisa under the supervision of professor Alessio Micheli.
 
 ##### Table of Contents  
-[CLI usage](#cli usage)   
+[CLI usage](#cli usage)
+
 <a name="cli usage"/>
 
 ## CLI usage
