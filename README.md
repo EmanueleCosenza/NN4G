@@ -11,3 +11,6 @@ This project has been developed as part of my undergraduate thesis at the Univer
 - The `data` directory contains MUTAG, NCI1 and IMDB-M, three graph datasets used for model assessment.
 - The `tests` directory contains hyperparameter grids in JSON format.
 
+## Datasets
+The datasets MUTAG, NCI1 and IMDB-M were taken from http://graphkernels.cs.tu-dortmund.de. MUTAG and NCI1 are both chemical datasets for binary classification, while IMDB-M is a social network dataset for multiclassification.
+
