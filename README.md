@@ -14,7 +14,7 @@ This project has been developed as part of my undergraduate thesis at the Univer
 - [Datasets](https://github.com/EmanueleCosenza/NN4G/blob/master/README.md#datasets)
 
 ## CLI usage
-`pynn4g` is a basic CLI that can be used to experiment with the model. It offers 4 main functionalities through 4 commands.
+`pynn4g` is a basic CLI that can be used to experiment with the model. Informations about the available commands and options are obtainable running `pynn4g` with the `--help` option. It offers 4 main functionalities through 4 commands.
 
 `train` trains a single network on a dataset (early stopping is optional). Learning curves can be plotted with the `--plot` option. In the following example, a network is trained on the NCI1 dataset using early stopping. `tests/NCI1.json` is a JSON file which contains the network hyperparameters.
 ```
@@ -79,7 +79,9 @@ Python's `ProcessPoolExecutor` class is used in both functions to parallelize tr
 ## Dataset creation
 Inside the `data.py` module, the `BenchmarkGraphDataset` class represents a graph dataset. Its `from_files` method constructs a dataset parsed from files in the format specified in http://graphkernels.cs.tu-dortmund.de. A dataset can also be created from an already existing list of graphs and targets.
 
-The `Graph` class represents a graph in a graph dataset. It extends NetworkX's `DiGraph`, a directed graph. Undirected graphs can be created adding for each edge u->v of a graph the edge v->u.
+The `Graph` class represents a graph in a graph dataset. It extends NetworkX's `DiGraph`, a directed graph. Undirected graphs can be created adding for each edge u->v of a graph the edge v->u. Attributes can be associated to each node of a graph.
+
+If a dataset does not contain node labels (as in IMDB-M), node attributes can be set to the one-hot representation of the node degree through the `deg_encoding` method.
 
 ## Datasets
 The MUTAG, NCI1 and IMDB-M datasets are all taken from http://graphkernels.cs.tu-dortmund.de. MUTAG and NCI1 are both chemical datasets for binary classification, while IMDB-M is a social network dataset for multiclassification.
