@@ -37,7 +37,7 @@ python pynn4g.py predict DS_DIR trained/mutag.model
 - The `tests` directory contains hyperparameter grids in JSON format.
 
 ## Model implementation
-The `Layer` class represents a layer of the neural network. Objects of this type are used inside the `NN4G` class to represent hidden layers and output layers. Since it inherits from PyTorch's `Module`, `Layer` implements the `forward` method, which computes the layer outputs given its inputs.
+The `Layer` class represents a layer of the neural network. Objects of this type are used inside the `NN4G` class to represent hidden layers and output layers. `Layer` inherits from PyTorch's `Module` and therefore implements a `forward` method, which computes the layer outputs given its inputs.
 
 The `NN4G` class represents a neural network. It is both a binary classifier and a multiclassifier. The class inherits from scikit-learn's `BaseEstimator` implementing its base methods `get_params` and `set_params`, which respectively get and set the network parameters. In order to be a scikit-learn classifier, `NN4G` implements `fit` and `predict`. The `fit` method is used to train the network on a training set, optionally using a validation set for the early stopping procedure, while the `predict` method is used to calculate predictions associated to graphs contained in a list. The class also implements `score`, which computes the network accuracy on a dataset. Each network hyperparameter can be set using `NN4G`'s constructor.\
 The class interface is used by the validation module to do model selection and to assess the model on a dataset.
