@@ -52,7 +52,7 @@ Python's `ProcessPoolExecutor` class is used in both functions to parallelize tr
 ## Dataset creation
 Inside the `data.py` module, the `BenchmarkGraphDataset` class represents a graph dataset. Its `from_files` method constructs a dataset parsed from files in the format specified in http://graphkernels.cs.tu-dortmund.de. A dataset can also be created from an already existing list of graphs and targets.
 
-The `Graph` class represents a graph in a graph dataset. It extends NetworkX's `DiGraph`, a directed graph. Undirected graphs are created adding for each edge u->v of a graph the edge v->u.
+The `Graph` class represents a graph in a graph dataset. It extends NetworkX's `DiGraph`, a directed graph. Undirected graphs can be created adding for each edge u->v of a graph the edge v->u.
 
 ## CLI implementation
 
