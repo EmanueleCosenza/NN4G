@@ -36,6 +36,9 @@ python pynn4g.py predict DS_DIR trained/mutag.model
 - The `data` directory contains MUTAG, NCI1 and IMDB-M, three graph datasets used for model assessment.
 - The `tests` directory contains hyperparameter grids in JSON format.
 
+## CLI implementation
+`pynn4g` has been implemented using the standard Python module for argument parsing, argparse. In `pynn4g.py`, different actions are taken for each `pynn4g` command using the interfaces exposed by the other modules.
+
 ## Model implementation
 The `Layer` class represents a layer of the neural network. Objects of this type are used inside the `NN4G` class to represent hidden layers and output layers. `Layer` inherits from PyTorch's `Module` and therefore implements a `forward` method, which computes the layer outputs given its inputs.
 
@@ -53,9 +56,6 @@ Python's `ProcessPoolExecutor` class is used in both functions to parallelize tr
 Inside the `data.py` module, the `BenchmarkGraphDataset` class represents a graph dataset. Its `from_files` method constructs a dataset parsed from files in the format specified in http://graphkernels.cs.tu-dortmund.de. A dataset can also be created from an already existing list of graphs and targets.
 
 The `Graph` class represents a graph in a graph dataset. It extends NetworkX's `DiGraph`, a directed graph. Undirected graphs can be created adding for each edge u->v of a graph the edge v->u.
-
-## CLI implementation
-`pynn4g` has been implemented using the standard Python module for argument parsing, argparse. In `pynn4g.py`, different actions are taken for each `pynn4g` command using the interfaces exposed by the other modules.
 
 ## Datasets
 The MUTAG, NCI1 and IMDB-M datasets are all taken from http://graphkernels.cs.tu-dortmund.de. MUTAG and NCI1 are both chemical datasets for binary classification, while IMDB-M is a social network dataset for multiclassification.
