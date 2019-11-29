@@ -40,7 +40,8 @@ python pynn4g.py predict DS_DIR trained/mutag.model
 `pynn4g` has been implemented using the standard Python module for argument parsing, argparse. In `pynn4g.py`, different actions are taken for each `pynn4g` command using the interfaces exposed by the other modules.
 
 ## Model implementation
-The `Layer` class represents a layer of the neural network. Objects of this type are used inside the `NN4G` class to represent hidden layers and output layers. `Layer` inherits from PyTorch's `Module` and therefore implements a `forward` method, which computes the layer outputs given its inputs.
+The `Layer` class represents a layer of the neural network. Objects of this type are used inside the `NN4G` class to represent hidden layers and output layers. `Layer` inherits from PyTorch's `Module` and therefore implements a `forward` method, which computes the layer outputs given its inputs.\
+The activation function of the units in a layer can be chosen between `PyTorch`'s `Tanh`, `Sigmoid` and `Softmax` (for the output layer).
 
 The `NN4G` class represents a neural network. In this particular implementation, NN4G can be either a binary classifier or a multiclassifier.\
 The class inherits from scikit-learn's `BaseEstimator` implementing its base methods `get_params` and `set_params`, which respectively get and set the network parameters. In order to be a scikit-learn classifier, `NN4G` implements `fit` and `predict`. The `fit` method is used to train the network on a training set, optionally using a validation set for the early stopping procedure, while the `predict` method is used to calculate predictions associated to graphs contained in a list. The class also implements `score`, which computes the network accuracy on a dataset. Each network hyperparameter can be set using `NN4G`'s constructor.\
@@ -48,7 +49,13 @@ The class interface is used by the validation module to do model selection and t
 
 ###### Training procedure
 In each iteration of the training loop in the `fit` method:
-- Aew hidden unit is trained and added to the network 
+1. A new hidden unit is trained and added to the network, maximizing the correlation between the unit output and the residual errors in the output layer for the previous iteration.\
+Multiple units can be trained in parallel to find the best correlation. The training of a single hidden unit happens inside `generate_candidate_unit`. Then, in the `generate_hidden_unit`, results from multiple trainings are gathered and, finally, the best unit is added to the network.
+2. The output layer is trained by minimizing a loss function (MSE or cross entropy loss). The training is implemented inside `generate_output_unit`.
+3. New predictions and residual errors are computed for each training set sample.
+
+Minimization and maximization problems are solved by means of the algorithm of gradient ascent/descent.\
+In both cases, the algorithms are implemented using PyTorch's `Optimizer`s with weight decay (L2 loss). In this way, gradients are automatically computed by PyTorch's through its computational graph and weights are updated calling the `Tensor`'s `backward` method.
 
 ## Model selection and model assessment implementation
 The model selection and model assessment procedures are defined inside the `validation.py` module.\
