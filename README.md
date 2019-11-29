@@ -51,7 +51,7 @@ python pynn4g.py predict DS_DIR trained/mutag.model
 
 ## Model implementation
 The neural network implementation is based on PyTorch, a Python module for deep learning.\
-The two most important classes in the `model.py` module are `Layer` and `NN4G`.
+Every class concerning the model is inside the `model.py` module. The two most important classes in the module are `Layer` and `NN4G`.
 
 The `Layer` class represents a layer of the neural network. Objects of this type are used inside the `NN4G` class to represent hidden layers and output layers. `Layer` inherits from PyTorch's `Module` and therefore implements a `forward` method, which computes the layer outputs given its inputs.\
 The activation function of the units in a layer can be chosen between `PyTorch`'s `Tanh`, `Sigmoid` and `Softmax` (for the output layer).
