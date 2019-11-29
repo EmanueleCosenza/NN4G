@@ -8,13 +8,14 @@ This project has been developed as part of my undergraduatethesis at the Univers
 
 `train` trains a single network on a dataset (early stopping is optional). Learning curves can be plotted with the `--plot` option.
 ```
-git status
-git add
-git commit
+python pynn4g.py train data/NCI1 --early stopping --samples=100 --params=tests/NCI1.json --plot
 ```
-- `assess`
-- `select`
-- `predict`
+
+`assess`
+
+`select`
+
+`predict`
 
 
 ## Project structure
