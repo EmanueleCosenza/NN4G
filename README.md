@@ -1,7 +1,17 @@
 # NN4G (Neural Network For Graphs)
 NN4G is a constructive neural network for graphs defined in [Micheli, Alessio. "Neural network for graphs: A contextual constructive approach." IEEE Transactions on Neural Networks 20.3 (2009): 498-511](https://ieeexplore.ieee.org/abstract/document/4773279).
 This repository contains a Python implementation of NN4G with new architectural and training variants, a validation system for the network and `pynn4g`, a basic command line interface.
-This project has been developed as part of my undergraduate thesis at the University of Pisa under the supervision of professor Alessio Micheli.
+This project has been developed as part of my undergraduatethesis at the University of Pisa under the supervision of professor Alessio Micheli.
+
+## CLI usage
+`pynn4g` is a basic CLI that can be used to experiment with the model. It offers 4 main functionalities through 4 commands:
+- `train` trains a single network on a dataset (early stopping is optional). Learning curves can be plotted with the `--plot` option.
+```
+git status
+git add
+git commit
+```
+
 
 ## Project structure
 - `model.py` contains everything related to the NN4G model.
@@ -11,8 +21,20 @@ This project has been developed as part of my undergraduate thesis at the Univer
 - The `data` directory contains MUTAG, NCI1 and IMDB-M, three graph datasets used for model assessment.
 - The `tests` directory contains hyperparameter grids in JSON format.
 
-The class `NN4G` represents the neural network.  inherits from scikit-learn's `BaseEstimator` and therefore it implements its base methods.
+## Model implementation
+The `Layer` class represents a layer of the neural network. Objects of this type are used inside the `NN4G` class to represent hidden layes and output layers. Since it inherits from PyTorch's `Module`, `Layer` implements the `forward` method, which computes the layer outputs given its inputs.\
+The `NN4G` class represents a neural network. It is both a binary classifier and a multiclassifier. The class inherits from scikit-learn's `BaseEstimator` implementing its base methods `get_params` and `set_params`, which respectively get and set the network parameters. In order to be a scikit-learn classifier, `NN4G` implements `fit` and `predict`. The `fit` method is used to train the network on a training set, optionally using a validation set for the early stopping procedure, while the `predict` method is used to calculate predictions associated to graphs contained in a list. The class also implements `score`, which computes the network accuracy on a dataset. Each network hyperparameter can be set using `NN4G`'s constructor.\
+The class interface is used by the validation module to do model selection and to assess the model on a dataset.
+
+## Model selection and model assessment
+The model selection and model assessment procedures are defined inside the `validation.py` module. Model selection is implemented inside the `grid_search_cv` function, using k-fold cross validation and grid search for hyperparameter optimization. Model assessment is implemented inside the `nested_cross_validation` function, using a nested cross validation procedure. While `grid_search_cv` returns the final network trained with the best hyperparameters on the entire input dataset, `nested_cross_validation` returns an estimate of the model performance on a dataset. Python's `ProcessPoolExecutor` class is used in both functions to parallelize trainings on multiple CPUs. Both functions accept an hyperparameter grid as a Python dictionary.
+
+## Dataset creation
+Inside the `data.py` module, the `BenchmarkGraphDataset` class represents a graph dataset. Its `from_files` method constructs a dataset parsed from files in the format specified in http://graphkernels.cs.tu-dortmund.de. A dataset can also be created from an already existing list of graphs and targets.\
+The `Graph` class represents a graph in a graph dataset. It extends NetworkX's `DiGraph`, a directed graph. Undirected graphs are created adding for each edge u->v of a graph the edge v->u.
+
+## CLI implementation
 
 ## Datasets
-The datasets MUTAG, NCI1 and IMDB-M were taken from http://graphkernels.cs.tu-dortmund.de. MUTAG and NCI1 are both chemical datasets for binary classification, while IMDB-M is a social network dataset for multiclassification.
+The MUTAG, NCI1 and IMDB-M datasets are all taken from http://graphkernels.cs.tu-dortmund.de. MUTAG and NCI1 are both chemical datasets for binary classification, while IMDB-M is a social network dataset for multiclassification.
 
