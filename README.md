@@ -81,7 +81,7 @@ Inside the `data.py` module, the `BenchmarkGraphDataset` class represents a grap
 
 The `Graph` class represents a graph in a graph dataset. It extends NetworkX's `DiGraph`, a directed graph. Undirected graphs can be created adding for each edge u->v of a graph the edge v->u. Attributes can be associated to each node of a graph.
 
-If a dataset does not contain node labels (as in IMDB-M), node attributes can be set to the one-hot representation of the node degree through the `deg_encoding` method.
+If a dataset does not contain node labels (as in IMDB-M), node attributes can be set to a one-hot representation of the node degree through the `deg_encoding` method.
 
 ## Datasets
 The MUTAG, NCI1 and IMDB-M datasets are all taken from http://graphkernels.cs.tu-dortmund.de. MUTAG and NCI1 are both chemical datasets for binary classification, while IMDB-M is a social network dataset for multiclassification.
