@@ -32,9 +32,9 @@ python pynn4g.py predict DS_DIR trained/mutag.model
 - `model.py` contains everything related to the NN4G model.
 - `data.py` contains the definition of a graph dataset.
 - `validation.py` contains functions used for model selection and model assessment.
-- `pynn4g.py` contains the implementation of a CLI which can be used to train a network, assess the model, select a model and predict new data with a trained network.
+- `pynn4g.py` contains the implementation of a CLI which can be used to train a network, assess the model, select a model and predict new data with a trained network. It depends on all the previous modules.
 - The `data` directory contains MUTAG, NCI1 and IMDB-M, three graph datasets used for model assessment.
-- The `tests` directory contains hyperparameter grids in JSON format.
+- The `tests` directory contains examples of hyperparameter grids in JSON format.
 
 ## CLI implementation
 `pynn4g` has been implemented using the standard Python module for argument parsing, argparse. In `pynn4g.py`, different actions are taken for each `pynn4g` command using the interfaces exposed by the other modules.
