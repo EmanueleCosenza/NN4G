@@ -3,6 +3,11 @@ NN4G is a constructive neural network for graphs defined in [Micheli, Alessio. "
 This repository contains a Python implementation of NN4G with new architectural and training variants, a validation system for the network and `pynn4g`, a basic command line interface.
 This project has been developed as part of my undergraduatethesis at the University of Pisa under the supervision of professor Alessio Micheli.
 
+##### Table of Contents  
+[CLI usage](#cli usage) 
+...snip...    
+<a name="cli usage"/>
+
 ## CLI usage
 `pynn4g` is a basic CLI that can be used to experiment with the model. It offers 4 main functionalities through 4 commands.
 
