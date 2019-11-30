@@ -68,7 +68,7 @@ Multiple units can be trained in parallel to find the best correlation. The trai
 3. New predictions and residual errors are computed for each training set sample.
 
 Minimization and maximization problems are solved by means of gradient ascent/descent.\
-In both cases, the algorithms are implemented using PyTorch's `Optimizer`s with weight decay (L2 loss). In this way, gradients are automatically computed by PyTorch through its computational graph and weights are updated calling `Tensor`'s `backward` method.
+In both cases, the algorithms are implemented using PyTorch's `Optimizer`s with weight decay (L2 loss). In this way, gradients are automatically computed by PyTorch through its computational graph and weights are updated by calling `Tensor`'s `backward` method.
 
 ## Model selection and model assessment
 The model selection and model assessment procedures are defined inside the `validation.py` module.\
