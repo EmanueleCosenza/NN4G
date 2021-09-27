@@ -14,7 +14,7 @@ This project has been developed as part of my undergraduate thesis at the Univer
 - [Datasets](https://github.com/EmanueleCosenza/NN4G/blob/master/README.md#datasets)
 
 ## CLI usage
-`pynn4g` is a basic CLI that can be used to experiment with the model. Informations about the available commands and options are obtainable running `pynn4g` with the `--help` option. The CLI offers 4 main functionalities through 4 commands.
+`pynn4g` is a basic CLI that can be used to experiment with the model. Information about the available commands and options are obtainable running `pynn4g` with the `--help` option. The CLI offers 4 main functionalities through 4 commands.
 
 `train` trains a single network on a dataset (early stopping is optional). Learning curves can be plotted with the `--plot` option. In the following example, a network is trained on the NCI1 dataset using early stopping. `tests/NCI1.json` is a JSON file which contains the network hyperparameters.
 ```
